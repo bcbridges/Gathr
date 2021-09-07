@@ -52,6 +52,20 @@ User.init(
     },
   },
   {
+    hooks: {
+      beforeCreate: async (newUserData) => {
+        newUserData.email = await newUserData.toLowerCase();
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.email = await updatedUserData.email.toLowerCase();
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return updatedUserData;
+      },
+    },
+  },
+  {
     sequelize,
     timestamps: true,
     freezeTableName: true,

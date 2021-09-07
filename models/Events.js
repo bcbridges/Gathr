@@ -61,6 +61,10 @@ Events.init(
       type: DataTypes.STRING(1234),
       allowNull: false,
     },
+    event_image: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     sequelize,

@@ -6,24 +6,24 @@ class Events extends Model {}
 
 Events.init(
   {
-    eventID: {
+    event_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    ownerID: {
+    owner_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "userID",
+        key: "user_id",
       },
     },
-    tagID: {
+    tag_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "eventtags",
-        key: "tagID",
+        key: "tag_id",
       },
     },
     address_1: {
@@ -66,7 +66,7 @@ Events.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: "events",
   }
 );

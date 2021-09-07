@@ -6,7 +6,7 @@ class EventTags extends Model {}
 
 EventTags.init(
   {
-    tagID: {
+    tag_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -22,7 +22,7 @@ EventTags.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: "eventtags",
   }
 );

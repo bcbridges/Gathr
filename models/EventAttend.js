@@ -6,24 +6,24 @@ class EventAttend extends Model {}
 
 EventAttend.init(
   {
-    event_AttendID: {
+    event_attend_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    eventID: {
+    event_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "events",
-        key: "eventID",
+        key: "event_id",
       },
     },
     attendee: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "userID",
+        key: "user_id",
       },
     },
   },
@@ -31,7 +31,7 @@ EventAttend.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: "eventattend",
   }
 );

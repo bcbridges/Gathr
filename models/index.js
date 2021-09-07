@@ -1,17 +1,19 @@
 const User = require("./User");
-const Events = require("./Events");
 const EventAttend = require("./EventAttend");
 const EventTags = require("./EventTags");
+const Events = require("./Events");
 
-User.hasMany(Events, { as: "ownerID" });
+User.hasMany(Events, { foreignKey: "owner_id" });
 
-User.hasMany(EventAttend);
+User.hasMany(EventAttend, { foreignKey: "attendee" });
 
-Events.hasMany(EventAttend);
+Events.hasMany(EventAttend, { foreignKey: "event_id" });
 
-Events.hasMany(EventTags);
+EventTags.hasMany(Events, {
+  foreignKey: "tag_id",
+});
 
-module.export = {
+module.exports = {
   User,
   Events,
   EventAttend,

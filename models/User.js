@@ -6,7 +6,7 @@ class User extends Model {}
 
 User.init(
   {
-    userID: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -50,17 +50,12 @@ User.init(
         len: [5, 5],
       },
     },
-    isValidated: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-    },
   },
   {
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: "user",
   }
 );

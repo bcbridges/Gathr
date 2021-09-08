@@ -1,3 +1,4 @@
+
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
@@ -65,13 +66,16 @@ User.init(
         return updatedUserData;
       },
     },
-
     sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: false,
     modelName: "user",
-  }
+  },
+  
+    
+  
 );
 
 module.exports = User;
+

@@ -1,3 +1,4 @@
+
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -57,10 +58,6 @@ Events.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    event_title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     description: {
       type: DataTypes.STRING(1234),
       allowNull: false,
@@ -80,3 +77,4 @@ Events.init(
 );
 
 module.exports = Events;
+

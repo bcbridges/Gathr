@@ -1,4 +1,5 @@
 
+
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -77,4 +78,5 @@ Events.init(
 );
 
 module.exports = Events;
+
 

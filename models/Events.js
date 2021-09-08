@@ -32,7 +32,7 @@ Events.init(
     },
     address_2: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     city: {
       type: DataTypes.STRING,

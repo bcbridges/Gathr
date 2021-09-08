@@ -27,7 +27,8 @@ const loginFormHandler = async (event) => {
     // where is response.ok set?
     if (response.ok) {
       // where does this go?
-      document.location.replace("/");
+      //   document.location.replace("INSERT SEARCH PAGE");
+      alert("Login successful.");
     } else {
       alert("Login failed.");
     }
@@ -51,7 +52,8 @@ const signupFormHandler = async (event) => {
     // where is response.ok set?
     if (response.ok) {
       // where does this go?
-      document.location.replace("/");
+      //   document.location.replace("INSERT LOGIN PAGE");
+      alert("Successful.");
     } else {
       alert("Please try again.");
     }
@@ -71,13 +73,13 @@ const searchInterestHandler = async (event) => {
       body: JSON.stringify({ searchTerm }),
     });
 
-    // where is response.ok set?
-    if (response.ok) {
-      // where does this go?
-      document.location.replace("/");
-    } else {
-      alert("Please try again.");
-    }
+    // // where is response.ok set?
+    // if (response.ok) {
+    //   // where does this go?
+    //   document.location.replace("/");
+    // } else {
+    //   alert("Please try again.");
+    // }
   }
 };
 
@@ -86,11 +88,11 @@ const searchInterestHandler = async (event) => {
 // ARE WE USING THE FORM? OR THE BUTTON?
 document
   .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
+  .addEventListener("submit", alert("WORKING"));
 
 document
   .querySelector(".signup-form")
-  .addEventListener("submit", signupFormHandler);
+  .addEventListener("submit", alert("WORKING"));
 
 // event listener for homepage events list. Need callback (imported?) for click event.
-document.querySelector(".upcoming-events").addEventListener("click", XXXX);
+// document.querySelector(".upcoming-events").addEventListener("click", XXXX);

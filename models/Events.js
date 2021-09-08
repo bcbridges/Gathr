@@ -1,3 +1,5 @@
+
+
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -32,7 +34,7 @@ Events.init(
     },
     address_2: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     city: {
       type: DataTypes.STRING,
@@ -76,3 +78,5 @@ Events.init(
 );
 
 module.exports = Events;
+
+

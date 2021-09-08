@@ -1,3 +1,4 @@
+
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
@@ -77,3 +78,4 @@ User.init(
 );
 
 module.exports = User;
+

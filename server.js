@@ -1,13 +1,19 @@
 const path = require("path");
 const express = require("express");
 const sequelize = require("./config/connection");
+const exphbs = require("express-handlebars");
 const { User, Events, EventTags, EventAttend } = require("./models");
 
-// Do not have any routes atm
 const routes = require("./controllers");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+const hbs = exphbs.create({});
+
+//Require handlebar template engine
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(routes);
 app.use(express.json());

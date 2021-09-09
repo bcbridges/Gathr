@@ -44,7 +44,7 @@ User.init(
     },
     postal: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 80204,
       validate: {
         // Must be a valid US ZIP code

@@ -1,0 +1,74 @@
+<div class='hero-body has-text-centered'>
+  <p class='title'>Use keywords to find events</p>
+
+  <!--Search Bar-->
+  <div class>
+    <input class='input is-normal' type='text' placeholder='Normal input' />
+  </div>
+
+  <!--Cards for searched events-->
+  <div
+    class='column is-half-tablet is-one-third-desktop is-one-quarter-widescreen'
+  >
+    <div class='card'>
+      <!--This section is for if we want to be able to add images. leaving for now.
+      <div class='card-image'>
+        
+        <figure class='image is-4by3'>
+            <img src='${imageSource}' alt='Band image' />
+          </a>
+        </figure>
+      </div>
+        -->
+      <div class='card-content'>
+        <div class='media'>
+          <div class='media-content'>
+            <p class='title is-4'>${concertNameVar}</p>
+            <p class='is-6'>${concertVenueVar}</p>
+            <p class='is-6'>${formatDateVar}</p>
+            <p class='is-6'>${formatTimeVar}</p>
+          </div>
+        </div>
+        <footer class='card-footer'>
+          <a
+            href='#'
+            class='card-footer-item button save'
+            data-index='${i}'
+          >Save</a>
+          <a
+            href='#'
+            class='card-footer-item button is-hidden delete'
+          >Delete</a>
+          <!-- This is for if we wanted to give an option to 
+          show the location on google mapes
+          <button
+            class='card-footer-item button open-modal map'
+            data-index='${i}'
+          >View Map
+          </button>
+          -->
+        </footer>
+      </div>
+    </div>
+  </div>
+  <!--This is for the Google Maps pop up
+  <div class='modal numberModal${i}'>
+    <div class='modal-background eventModalClose'></div>
+    <div class='modal-content'>
+      <iframe
+        width='450'
+        height='250'
+        frameborder='0'
+        style='border: 0'
+        src='${googleMapsURL}'
+        allowfullscreen
+      >
+      </iframe>
+    </div>
+    <button
+      class='modal-close is-large eventModalClose'
+      aria-label='close'
+    ></button>
+  </div>
+  -->
+</div>

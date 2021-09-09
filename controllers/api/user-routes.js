@@ -1,18 +1,19 @@
-const router = require('express').Router();
-const { User } = require('../../models');
-const bcrypt = require('bcrypt');
+const router = require("express").Router();
+const { User } = require("../../models");
+const bcrypt = require("bcrypt");
 
 // CREATE new user
 //http:localhost:3001/api/users
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     const dbUserData = await User.create({
-    //   username: req.body.username,
+      //   username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      postal: req.body.postal
+      postal: req.body.postal,
     });
 
     req.session.save(() => {
@@ -28,7 +29,9 @@ router.post('/', async (req, res) => {
 
 // Login
 //http:localhost:3001/api/users/login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
+  console.log("We're hitting the route.");
+  console.log(req.body);
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -39,7 +42,7 @@ router.post('/login', async (req, res) => {
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
@@ -48,7 +51,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
@@ -57,7 +60,7 @@ router.post('/login', async (req, res) => {
 
       res
         .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
+        .json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
@@ -67,7 +70,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 //http:localhost:3001/api/users/logout
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

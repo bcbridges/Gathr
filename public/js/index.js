@@ -1,14 +1,19 @@
 //   for login event handler
 const loginFormHandler = async (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
-  const email = document.querySelector(" .email-login").value.trim();
-  const password = document.querySelector(".password-login").value.trim();
-
+  var email = document.querySelector(".email-login").value.trim();
+  var password = document.querySelector(".password-login").value.trim();
+  console.log(`${email} & ${password}`);
   if (email && password) {
+    const body = { email, password };
+    console.log(body);
     const response = await fetch("/api/users/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
@@ -30,6 +35,7 @@ const signupFormHandler = async (event) => {
   if (email && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
+
       body: JSON.stringify({ email, password }),
     });
 
@@ -61,6 +67,7 @@ const searchInterestHandler = async (event) => {
 document.getElementById("login").addEventListener("click", async (e) => {
   //do login api call
   //if success, redirect logic here
+  e.preventDefault();
   e.stopPropagation();
   loginFormHandler();
 });

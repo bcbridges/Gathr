@@ -10,4 +10,11 @@ router.use('/event', eventRoutes);
 router.use('/eventTag', eventTagRoutes);
 router.use('/users', userRoutes);
 
+// router.post('/seed', (req, res) => {
+//     if (req.body.password !== process.env.SUPER_SECRET) {
+//         return res.json("WRONG PASSWORD!")
+//     }
+//     //seed database
+// })
+
 module.exports = router;

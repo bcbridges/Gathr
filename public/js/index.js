@@ -50,11 +50,7 @@ const signupFormHandler = async (event) => {
 };
 
 // AFTER LOGIN
-const searchInterestHandler = async (event) => {
-  // event.preventDefault();
-
-  const searchTerm = document.querySelector(".searchbar").value.trim();
-
+const searchInterestHandler = async (searchTerm) => {
   if (searchTerm) {
     const response = await fetch("/api/event", {
       method: "GET",
@@ -92,8 +88,12 @@ if (window.location.pathname == "/") {
 if (document.location.pathname == "/api/users/search") {
   document.querySelector(".searchbar").addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
+      const searchTerm1 = document.querySelector('input[name="search"]');
+      const searchTerm2 = searchTerm1.value;
+      console.log(searchTerm2);
+
       e.preventDefault();
-      searchInterestHandler();
+      searchInterestHandler(searchTerm2);
       console.log("The enter button was clicked.");
     }
   });

@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/SEARCH PAGE");
+      document.location.replace("https://www.theworldsworstwebsiteever.com/");
       alert("Login successful.");
     } else {
       alert("Login failed.");
@@ -27,23 +27,25 @@ const loginFormHandler = async (event) => {
 
 // for signup event handler
 const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const email = document.querySelector(".email-login").value.trim();
-  const password = document.querySelector(".password-login").value.trim();
-
+  var email = document.querySelector(".email-login").value.trim();
+  var password = document.querySelector(".password-login").value.trim();
+  console.log(`${email} & ${password}`);
   if (email && password) {
-    const response = await fetch("/api/users/login", {
+    const body = { email, password };
+    console.log(body);
+    const response = await fetch("/api/users", {
       method: "POST",
-
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
-      document.location.replace("/SEARCH PAGE");
-      alert("Successful.");
+      document.location.replace("https://www.theworldsworstwebsiteever.com/");
+      alert("User Created.");
     } else {
-      alert("Please try again.");
+      alert("User create failed.");
     }
   }
 };
@@ -55,9 +57,12 @@ const searchInterestHandler = async (event) => {
   const searchTerm = document.querySelector(".searchbar").value.trim();
 
   if (searchTerm) {
-    const response = await fetch("/api/users", {
+    const response = await fetch("/api/event", {
       method: "GET",
       body: JSON.stringify({ searchTerm }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 };
@@ -73,6 +78,7 @@ document.getElementById("login").addEventListener("click", async (e) => {
 });
 
 document.querySelector(".signup-form").addEventListener("click", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   signupFormHandler();
 });

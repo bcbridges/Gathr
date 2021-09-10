@@ -1,15 +1,5 @@
-
 * {
   font-family: 'Ubuntu', sans-serif;
-}
-
-body.main {
-  background-color: whitesmoke;
-  background: url(./GathrMain.jpg) no-repeat;
-  background-size: 100%;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 
 body {
@@ -17,6 +7,15 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+body.main {
+  background: url(./GathrMain.jpg) no-repeat;
+  background-size: 100%;
+}
+
+body.search {
+  background: none;
 }
 
 .section {
@@ -99,16 +98,6 @@ h2 {
     footer separately from header*/
   font-family: 'Times New Roman', Times, serif;
   color: #8a4d76;
-}
-
-.footer {
-  width: 100%;
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  padding: 3rem;
-  position: absolute;
-  bottom: 0;
 }
 
 /*Saving/Deleting Things*/

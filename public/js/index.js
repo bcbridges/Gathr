@@ -18,7 +18,6 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace("/api/users/search");
-      alert("Login successful.");
     } else {
       alert("Login failed.");
     }
@@ -52,7 +51,7 @@ const signupFormHandler = async (event) => {
 
 // AFTER LOGIN
 const searchInterestHandler = async (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
   const searchTerm = document.querySelector(".searchbar").value.trim();
 
@@ -69,19 +68,33 @@ const searchInterestHandler = async (event) => {
 
 // event handlers
 
-document.getElementById("login").addEventListener("click", async (e) => {
-  //do login api call
-  //if success, redirect logic here
-  e.preventDefault();
-  e.stopPropagation();
-  loginFormHandler();
-});
+console.log(window.location.pathname);
 
-document.querySelector(".signup-form").addEventListener("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  signupFormHandler();
-});
+if (window.location.pathname == "/") {
+  document.getElementById("login").addEventListener("click", async (e) => {
+    //do login api call
+    //if success, redirect logic here
+    e.preventDefault();
+    e.stopPropagation();
+    loginFormHandler();
+  });
+
+  document.querySelector(".signup-form").addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    signupFormHandler();
+  });
+}
 
 // event listener for homepage events list. Need callback (imported?) for click event.
 // document.querySelector(".upcoming-events").addEventListener("click", XXXX);
+
+if (document.location.pathname == "/api/users/search") {
+  document.querySelector(".searchbar").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      searchInterestHandler();
+      console.log("The enter button was clicked.");
+    }
+  });
+}

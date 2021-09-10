@@ -56,7 +56,7 @@ const searchInterestHandler = async (searchTerm) => {
       method: "GET",
     });
     if (response.ok) {
-      console.log("Get reponse was okay.");
+      document.location.replace(`/api/eventTag/${searchTerm}`);
     } else {
       console.log(response);
     }

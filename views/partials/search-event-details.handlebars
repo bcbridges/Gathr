@@ -1,0 +1,24 @@
+<div
+  class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
+>
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{events.0.event_title}}</p>
+          <p class="is-6">{{events.0.address_1}} {{events.0.address_2}}</p>
+          <p class="is-6">{{events.0.time_start}}</p>
+          <p class="is-6">{{events.0.description}}</p>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a
+          href="#"
+          class="card-footer-item button save"
+          data-index="{{i}}"
+        >Save</a>
+        <a href="#" class="card-footer-item button is-hidden delete">Delete</a>
+      </footer>
+    </div>
+  </div>
+</div>

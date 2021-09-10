@@ -29,11 +29,6 @@ h1 {
 }
 
 /*Banner with Search bar*/
-.hero.is-success .subtitle {
-  color: #8a4d76;
-  font-weight: bolder;
-}
-
 .searchButton {
   background-color: #8a4d76;
   color: #fff;

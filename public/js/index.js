@@ -17,8 +17,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("https://www.theworldsworstwebsiteever.com/");
-      alert("Login successful.");
+      document.location.replace("/api/users/search");
+      // alert("Login successful.");
     } else {
       alert("Login failed.");
     }

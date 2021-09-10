@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace("/api/users/search");
-      // alert("Login successful.");
+      alert("Login successful.");
     } else {
       alert("Login failed.");
     }
@@ -42,7 +42,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("https://www.theworldsworstwebsiteever.com/");
+      document.location.replace("/api/users/search");
       alert("User Created.");
     } else {
       alert("User create failed.");

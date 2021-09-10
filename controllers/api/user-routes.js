@@ -78,4 +78,12 @@ router.post("/logout", (req, res) => {
   }
 });
 
+router.get("/search", (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('search')
+  } else {
+    res.status(404);
+  }
+});
+
 module.exports = router;

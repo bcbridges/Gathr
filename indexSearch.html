@@ -26,15 +26,17 @@
     <title>Gathr</title>
   </head>
 
-  <body>
-    <div
+  <header
       class="
         container-fluid
         is-flex is-justify-content-space-between is-align-items-center
       "
     >
       <h1 class="is-size-1 ml-4">Gathr</h1>
-    </div>
+  </header>
+
+  <body class="search">
+    
     <!-- Section with our hero below the navbar and holds our dropdown selector -->
     
     <section
@@ -53,33 +55,38 @@
             placeholder="Search Keywords"
           />
         </div>
+        <button class="searchbtn button is-primary" id="searchbtn">
+          Search
+        </button>
       </div>
     </section>
 
     <div class="columns m-3 is-variable is-2 cardContainer is-multiline">
       <!-- This container will be populated with event cards in the selected state and also in the saved section. Appended by javascript. -->
     </div>
-    <!-- Footer with group names and github logo that takes you to repo when clicked -->
-    <footer class="footer">
-      <div class="names">
-        <ul>
-          <li>Brice Bridges</li>
-          <li>Bill Hennessey</li>
-          <li>Alex Lopez</li>
-          <li>Abby Castelow</li>
-        </ul>
-      </div>
-      <div class="logo">
-        <a href="https://github.com/bcbridges/Gathr" target="no_blank"
-          ><i class="fab fa-github fa-5x"></i
-        ></a>
-      </div>
-    </footer>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- MOMENT -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- Custom JS file -->
-    <script src="./public/js/index.js""></script>
+    
   </body>
+
+  <!-- Footer with group names and github logo that takes you to repo when clicked -->
+  <footer class="footer">
+    <div class="names">
+      <ul>
+        <li>Brice Bridges</li>
+        <li>Bill Hennessey</li>
+        <li>Alex Lopez</li>
+        <li>Abby Castelow</li>
+      </ul>
+    </div>
+    <div class="logo">
+      <a href="https://github.com/bcbridges/Gathr" target="no_blank"
+        ><i class="fab fa-github fa-5x"></i
+      ></a>
+    </div>
+  </footer>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- MOMENT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- Custom JS file -->
+  <script src="./public/js/index.js""></script>
 </html>

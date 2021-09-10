@@ -1,24 +1,25 @@
-<section
-  class='hero is-small is-success is-flex is-justify-content-center is-align-items-center'
->
-  <div class='hero-body has-text-centered'>
-    <p class='title'>Use keywords to find events</p>
+<body class='search'>
+  <section
+    class='hero is-small is-success is-flex is-justify-content-center is-align-items-center'
+  >
+    <div class='hero-body has-text-centered'>
+      <p class='title'>Use keywords to find events</p>
 
-    <!--Search Bar-->
-    <div class='searchbar'>
-      <input
-        class='input is-normal'
-        type='text'
-        placeholder='Search Keywords'
-      />
-    </div>
+      <!--Search Bar-->
+      <div class='searchbar'>
+        <input
+          class='input is-normal'
+          type='text'
+          placeholder='Search Keywords'
+        />
+      </div>
 
-    <!--Cards for searched events-->
-    <div
-      class='column is-half-tablet is-one-third-desktop is-one-quarter-widescreen'
-    >
-      <div class='card'>
-        <!--This section is for if we want to be able to add images. leaving for now.
+      <!--Cards for searched events-->
+      <div
+        class='column is-half-tablet is-one-third-desktop is-one-quarter-widescreen'
+      >
+        <div class='card'>
+          <!--This section is for if we want to be able to add images. leaving for now.
       <div class='card-image'>
         
         <figure class='image is-4by3'>
@@ -27,27 +28,27 @@
         </figure>
       </div>
         -->
-        <div class='card-content'>
-          <div class='media'>
-            <div class='media-content'>
-              <p class='title is-4'>{{event_title}}</p>
-              <p class='is-6'>{{address_1}} {{address_2}}</p>
-              <p class='is-6'>{{date}}</p>
-              <p class='is-6'>{{time}}</p>
-              <p class='is-6'>{{description}}</p>
+          <div class='card-content'>
+            <div class='media'>
+              <div class='media-content'>
+                <p class='title is-4'>{{event_title}}</p>
+                <p class='is-6'>{{address_1}} {{address_2}}</p>
+                <p class='is-6'>{{date}}</p>
+                <p class='is-6'>{{time}}</p>
+                <p class='is-6'>{{description}}</p>
+              </div>
             </div>
-          </div>
-          <footer class='card-footer'>
-            <a
-              href='#'
-              class='card-footer-item button save'
-              data-index='${i}'
-            >Save</a>
-            <a
-              href='#'
-              class='card-footer-item button is-hidden delete'
-            >Delete</a>
-            <!-- This is for if we wanted to give an option to 
+            <footer class='card-footer'>
+              <a
+                href='#'
+                class='card-footer-item button save'
+                data-index='${i}'
+              >Save</a>
+              <a
+                href='#'
+                class='card-footer-item button is-hidden delete'
+              >Delete</a>
+              <!-- This is for if we wanted to give an option to 
           show the location on google mapes
           <button
             class='card-footer-item button open-modal map'
@@ -55,11 +56,11 @@
           >View Map
           </button>
           -->
-          </footer>
+            </footer>
+          </div>
         </div>
       </div>
-    </div>
-    <!--This is for the Google Maps pop up
+      <!--This is for the Google Maps pop up
   <div class='modal numberModal${i}'>
     <div class='modal-background eventModalClose'></div>
     <div class='modal-content'>
@@ -79,5 +80,6 @@
     ></button>
   </div>
   -->
-  </div>
-</section>
+    </div>
+  </section>
+</body>

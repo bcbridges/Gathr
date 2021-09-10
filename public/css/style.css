@@ -1,14 +1,19 @@
-/* Sets the font for the whole document */
+
 * {
   font-family: 'Ubuntu', sans-serif;
 }
-/* Applies a background color to whole body */
-body {
+
+body.main {
   background-color: whitesmoke;
-  /*made background a shade darker to help discern cards
-  also added a shadow to cards further down*/
   background: url(./GathrMain.jpg) no-repeat;
   background-size: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body {
+  background-color: whitesmoke;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -18,29 +23,15 @@ body {
   background-color: #f5f5f5;
 }
 
-/*Header/Logo*/
-/* curently white */
+/*Header*/
 h1 {
   color: #ffdd57;
   font-weight: bold;
 }
 
-.saved {
-  /*not working yet added class = "saved" to index for the saved button*/
-  background-color: #00d1b2;
-  color: #ffff;
-}
-
-.saved:hover {
-  /*not working yet added class = "saved" to index for the saved button*/
-  background-color: #feecf0;
-  color: #ea4aaaff;
-  border-color: #ea4aaaff;
-}
-
-/*Banner with States Dropdown */
+/*Banner with Search bar*/
 /*currently overall background color 00d1b2ff*/
-.hero.is-primary .subtitle {
+.hero.is-success .subtitle {
   color: #8a4d76;
   font-weight: bolder;
 }
@@ -90,6 +81,18 @@ h1 {
   font-weight: bold;
 }
 
+.cardContainer {
+  position: relative;
+  display: block;
+  flex: 1;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*Footer*/
 h2 {
   /*changed to h2 from h1 to make it easier to edit
@@ -108,14 +111,16 @@ h2 {
   bottom: 0;
 }
 
-.cardContainer {
-  position: relative;
-  display: block;
-  flex: 1;
+/*Saving/Deleting Things*/
+.saved {
+  /*not working yet added class = "saved" to index for the saved button*/
+  background-color: #00d1b2;
+  color: #ffff;
 }
 
-.modal-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.saved:hover {
+  /*not working yet added class = "saved" to index for the saved button*/
+  background-color: #feecf0;
+  color: #ea4aaaff;
+  border-color: #ea4aaaff;
 }

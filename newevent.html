@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Links Bulma, a CSS framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!-- Links custom CSS  -->
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <!-- Links Ubuntu font-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap"
+    />
+    <!-- Makes fontawesome icons available -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <title>Gathr</title>
+  </head>
+
+  <header
+    class="
+      container-fluid
+      is-flex is-justify-content-space-between is-align-items-center
+    "
+  >
+    <h1 class="is-size-1 ml-4">Gathr</h1>
+  </header>
+
+  <!--Body-->
+  <body class="newevent">
+    <section>
+      <div
+        class="
+          columns
+          is-gapless
+          m-0
+          is-variable is-2
+          cardContainer
+          is-multiline is-centered
+        "
+      >
+        <!--Login Section-->
+        <div
+          class="
+            column
+            is-half-tablet is-one-third-desktop is-one-third-widescreen
+          "
+        >
+          <div class="card">
+            <div class="box">
+              <div class="field">
+                <label class="label">Event Name</label>
+                <div class="control">
+                  <input
+                    class="input event_title"
+                    type="text"
+                    placeholder="Event Name"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Event Admin</label>
+                <div class="control">
+                  <input
+                    class="input owner_id"
+                    type="text"
+                    placeholder="User Name"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Date & Time</label>
+                <div class="control">
+                  Start
+                  <input
+                    class="input time_start"
+                    type="text"
+                    placeholder="Start Time"
+                  />
+                  End
+                  <input
+                    class="input time_end"
+                    type="text"
+                    placeholder="End Time"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Location</label>
+                <div class="control">
+                  <input
+                    class="input address_1"
+                    type="text"
+                    placeholder="Address Line 1"
+                  />
+                  <input
+                    class="input address_2"
+                    type="text"
+                    placeholder="Address Line 2"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea description"
+                    placeholder="Textarea"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-success">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <!-- Footer with group names and github logo that takes you to repo when clicked -->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <div class="names">
+        Brice Bridges, Bill Hennessey, Alex Lopez, & Abby Castelow
+      </div>
+      <div class="logo">
+        <a href="https://github.com/bcbridges/Gathr" target="no_blank"
+          ><i class="fab fa-github fa-5x"></i
+        ></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- MOMENT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- Custom JS file -->
+  <script src="./public/js/index.js"></script>
+</html>

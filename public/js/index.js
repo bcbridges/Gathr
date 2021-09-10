@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
-
+    console.log(response);
     if (response.ok) {
       document.location.replace("/api/users/search");
     } else {
@@ -41,7 +41,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/api/users/search");
+      // document.location.replace("/api/users/search");
       alert("User Created.");
     } else {
       alert("User create failed.");

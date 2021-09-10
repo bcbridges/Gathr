@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Events } = require("../../models");
 const bcrypt = require("bcrypt");
 
 // CREATE new user
@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
 
-      res.render("search")
+      res.render("all");
     });
   } catch (err) {
     console.log(err);
@@ -78,9 +78,13 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.get("/search", (req, res) => {
+router.get("/search", async (req, res) => {
   if (req.session.loggedIn) {
-    res.render('search')
+    console.log("This is the /search route.");
+    const dbEventData = await Events.findAll();
+    const events = dbEventData.map((event) => event.get({ plain: true }));
+    console.log(events);
+    res.render("all", { events });
   } else {
     res.status(404);
   }

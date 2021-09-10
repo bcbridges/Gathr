@@ -52,13 +52,14 @@ const signupFormHandler = async (event) => {
 // AFTER LOGIN
 const searchInterestHandler = async (searchTerm) => {
   if (searchTerm) {
-    const response = await fetch("/api/event", {
+    const response = await fetch(`/api/eventTag/${searchTerm}`, {
       method: "GET",
-      body: JSON.stringify({ searchTerm }),
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
+    if (response.ok) {
+      console.log("Get reponse was okay.");
+    } else {
+      console.log(response);
+    }
   }
 };
 

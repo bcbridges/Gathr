@@ -10,6 +10,15 @@ const eventtagsdata = [
   {
     tag_description: "Running",
   },
+  {
+    tag_description: "Food",
+  },
+  {
+    tag_description: "Workout",
+  },
+  {
+    tag_description: "Football",
+  },
 ];
 
 const seedEventTag = () => EventTags.bulkCreate(eventtagsdata);

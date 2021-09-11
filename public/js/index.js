@@ -1,10 +1,9 @@
-//   for login event handler
+//   LOGIN EVENT HANDLER
 const loginFormHandler = async (event) => {
-  // event.preventDefault();
-
   var email = document.querySelector(".email-login").value.trim();
   var password = document.querySelector(".password-login").value.trim();
-  console.log(`${email} & ${password}`);
+
+  // IF BOTH EMAIL AND PASSWORD ARE FILLED IN, PROCEED
   if (email && password) {
     const body = { email, password };
     console.log(body);
@@ -15,20 +14,23 @@ const loginFormHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
-
+    console.log(response);
     if (response.ok) {
-      document.location.replace("/api/users/search");
+      document.location.replace("/api/users/search/Coffee");
     } else {
       alert("Login failed.");
     }
+  } else {
+    window.alert("Please fill in email & password.");
   }
 };
 
-// for signup event handler
+// SIGNUP EVENT HANDLER
 const signupFormHandler = async (event) => {
   var email = document.querySelector(".email-login").value.trim();
   var password = document.querySelector(".password-login").value.trim();
-  console.log(`${email} & ${password}`);
+
+  // IF BOTH EMAIL AND PASSWORD ARE FILLED IN, PROCEED
   if (email && password) {
     const body = { email, password };
     console.log(body);
@@ -41,32 +43,17 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/api/users/search");
+      document.location.replace("/api/users/search/Coffee");
       alert("User Created.");
     } else {
       alert("User create failed.");
     }
+  } else {
+    window.alert("Please fill in email & password.");
   }
 };
 
-// AFTER LOGIN
-const searchInterestHandler = async (searchTerm) => {
-  if (searchTerm) {
-    const response = await fetch(`/api/eventTag/${searchTerm}`, {
-      method: "GET",
-    });
-    if (response.ok) {
-      console.log("Get reponse was okay.");
-    } else {
-      console.log(response);
-    }
-  }
-};
-
-// event handlers
-
-console.log(window.location.pathname);
-
+// PATHNAME USED TO PARSE OUT WHICH HANDLEBAR TEMPLATE IS CURRENTLY RENDERED
 if (window.location.pathname == "/") {
   document.getElementById("login").addEventListener("click", async (e) => {
     //do login api call
@@ -83,19 +70,82 @@ if (window.location.pathname == "/") {
   });
 }
 
-// event listener for homepage events list. Need callback (imported?) for click event.
-// document.querySelector(".upcoming-events").addEventListener("click", XXXX);
-
-if (document.location.pathname == "/api/users/search") {
-  document.querySelector(".searchbar").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      const searchTerm1 = document.querySelector('input[name="search"]');
-      const searchTerm2 = searchTerm1.value;
-      console.log(searchTerm2);
-
+if (window.location.pathname == "/api/event/new") {
+  // PULL DATA FROM NEW EVENT FORM UPON SUBMIT
+  document
+    .querySelector('button[name="submitbtn"]')
+    .addEventListener("click", async (e) => {
       e.preventDefault();
-      searchInterestHandler(searchTerm2);
-      console.log("The enter button was clicked.");
+      const event_title = document
+        .querySelector('input[name="event_title"]')
+        .value.trim();
+      const event_desc = document
+        .querySelector('textarea[name="description"]')
+        .value.trim();
+      const start_date = document
+        .querySelector('input[name="start_date"]')
+        .value.trim();
+      const end_date = document
+        .querySelector('input[name="end_date"]')
+        .value.trim();
+      const addr_1 = document
+        .querySelector('input[name="address_1"]')
+        .value.trim();
+      const addr_2 = document
+        .querySelector('input[name="address_2"]')
+        .value.trim();
+      const tags = document.querySelector('select[name="tags"]').value;
+
+      // Creating new object if event fields are filled in
+      if (event_title && start_date && end_date && addr_1 && event_desc) {
+        var newEventInfo = {
+          event_title,
+          event_desc,
+          start_date,
+          end_date,
+          addr_1,
+          addr_2,
+          tags,
+        };
+      } else {
+        // If there is missing information - will alert the user when the try to submit
+        return window.alert("Please fill in all fields!");
+      }
+
+      // sending new event obj to POST /api/event/
+      const response = await fetch("/api/event/", {
+        method: "POST",
+        body: JSON.stringify(newEventInfo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(window.alert("New event created!"))
+        .then(document.location.replace("/api/users/search/Coffee"));
+    });
+
+  // IF USER CANCELS EVENT CREATION, BRINGS THEM BACK TO SEARCH/COFFEE
+  document
+    .querySelector('button[name="cancelbtn"]')
+    .addEventListener("click", () => {
+      document.location.replace("/api/users/search/Coffee");
+    });
+}
+
+// HANDLE LOGOUT REQUEST
+document
+  .querySelector('button[name="logoutbtn"]')
+  .addEventListener("click", async () => {
+    const logout = await fetch("/api/users/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (logout.ok) {
+      document.location.replace("/");
+    } else {
+      alert("Failed to log out.");
     }
   });
-}

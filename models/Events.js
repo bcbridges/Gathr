@@ -14,6 +14,7 @@ Events.init(
     },
     owner_id: {
       type: DataTypes.INTEGER,
+      primaryKey: false,
       references: {
         model: "user",
         key: "user_id",
@@ -21,6 +22,7 @@ Events.init(
     },
     tag_id: {
       type: DataTypes.INTEGER,
+      primaryKey: false,
       references: {
         model: "eventtags",
         key: "tag_id",
@@ -36,15 +38,15 @@ Events.init(
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     postal: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [5, 5],
       },

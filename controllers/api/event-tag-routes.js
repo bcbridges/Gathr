@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Events, EventTags } = require("../../models");
 
 //http:localhost:3001/api/eventTag
+//NOT SURE IF USING THIS
 router.get("/", async (req, res) => {
   // find all eventTags
   // let's include their events?
@@ -18,6 +19,7 @@ router.get("/", async (req, res) => {
 });
 
 //http:localhost:3001/api/eventTag/1<--this is just an example!
+// DOUBLE CHECK -> NOT SURE IF THIS IS A NEEDED ROUTE
 router.get("/:id", async (req, res) => {
   // find a single EventTag by its `id`
   // let's include their event
@@ -49,8 +51,7 @@ router.get("/:id", async (req, res) => {
       return;
     }
     const events = eventTagData.map((event) => event.get({ plain: true }));
-    console.log(events[0]);
-    res.render("search", { events });
+    res.render("all", { events });
     // res.status(200).json(eventTagData);
   } catch (err) {
     res.status(500).json(err);

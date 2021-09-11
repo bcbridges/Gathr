@@ -88,6 +88,8 @@ if (window.location.pathname == "/api/event/new") {
       const addr_2 = document
         .querySelector('input[name="address_2"]')
         .value.trim();
+      const tags = document.querySelector('select[name="tags"]').value;
+      console.log(tags);
 
       if (event_title && start_date && end_date && addr_1 && event_desc) {
         var newEventInfo = {
@@ -97,6 +99,7 @@ if (window.location.pathname == "/api/event/new") {
           end_date,
           addr_1,
           addr_2,
+          tags,
         };
       }
 

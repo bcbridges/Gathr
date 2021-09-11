@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const { User, Events, EventTags } = require("../../models");
 const bcrypt = require("bcrypt");
+const withAuth = require("../../utils/auth");
 
 // CREATE new user
+// IS THIS THE ROUTE WE'RE HITTING FOR A NEW USER?? THERE IS NO RES.RENDER
 //http:localhost:3001/api/users
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const dbUserData = await User.create({
       //   username: req.body.username,
@@ -30,8 +31,6 @@ router.post("/", async (req, res) => {
 // Login
 //http:localhost:3001/api/users/login
 router.post("/login", async (req, res) => {
-  console.log("We're hitting the route.");
-  console.log(req.body);
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -78,7 +77,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.get("/search/:id", async (req, res) => {
+router.get("/search/:id", withAuth, async (req, res) => {
   if (req.session.loggedIn) {
     console.log("This is the /search route.");
     const dbEventData = await Events.findAll({
@@ -90,7 +89,12 @@ router.get("/search/:id", async (req, res) => {
       },
     });
     const events = dbEventData.map((event) => event.get({ plain: true }));
-    console.log(events);
+    ////// NEED TO EDIT TIME TO BE UI FRIENDLY
+    // const edited_start = new Date(req.body.start_date).toLocaleString();
+    // const edited_end = new Date(req.body.end_date).toLocaleString();
+    // req.body.start_date = edited_start;
+    // req.body.end_date = edited_end;
+
     res.render("all", { events });
   } else {
     res.status(404);

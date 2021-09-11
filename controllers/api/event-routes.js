@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/new", async (req, res) => {
+router.get("/new", withAuth, async (req, res) => {
   const tagData = await EventTags.findAll();
   const tags = tagData.map((tag) => tag.get({ plain: true }));
   console.log(tags);
@@ -47,7 +47,7 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/create/new", async (req, res) => {
+router.get("/create/new", withAuth, async (req, res) => {
   try {
     res.status(200);
     res.render("newevent");
@@ -56,11 +56,20 @@ router.get("/create/new", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  // create a new tag
-  console.log(req.body);
+// VALID ROUTE - USED TO CREATE A NEW EVENT - BB
+router.post("/", async (req, res) => {
+  // Reversing user dropdown selection from the description to the id #
+  const tagid_lookup = await EventTags.findOne({
+    where: {
+      tag_description: req.body.tags,
+    },
+  });
+  req.body.tag_id = tagid_lookup.tag_id;
+
+  // Not sure yet how to find current logged in user to make owner_id
+  // Thinking to go back to dropdown - use similar methodology to tags above
   req.body.owner_id = 1;
-  req.body.tag_id = 1;
+
   Events.create({
     owner_id: req.body.owner_id,
     tag_id: req.body.tag_id,
@@ -80,19 +89,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
-  // update a tag's name by its `id` value
-  Events.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((updatedEvent) => {
-      res.json(updatedEvent);
-    })
-    .catch((err) => res.json(err));
-});
-
+// DOUBLE CHECK - PROBABLY DO NOT NEED THIS ROUTE.
 router.delete("/:id", (req, res) => {
   // delete on tag by its `id` value
   Events.destroy({

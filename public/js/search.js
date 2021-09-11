@@ -6,7 +6,6 @@ document.querySelector(".searchbar").addEventListener("keypress", (e) => {
 
     e.preventDefault();
     searchInterestHandler(searchTerm2);
-    console.log("The enter button was clicked.");
   }
 });
 

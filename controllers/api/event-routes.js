@@ -58,19 +58,24 @@ router.get("/create/new", async (req, res) => {
 
 router.post("/", (req, res) => {
   // create a new tag
+  console.log(req.body);
+  req.body.owner_id = 1;
+  req.body.tag_id = 1;
   Events.create({
     owner_id: req.body.owner_id,
     tag_id: req.body.tag_id,
-    address_1: req.body.address_1,
-    address_2: req.body.address_2,
-    time_start: req.body.time_start,
-    time_end: req.body.time_end,
-    description: req.body.description,
+    event_title: req.body.event_title,
+    address_1: req.body.addr_1,
+    address_2: req.body.addr_2,
+    time_start: req.body.start_date,
+    time_end: req.body.end_date,
+    description: req.body.event_desc,
   })
     .then((newEvent) => {
       res.json(newEvent);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });

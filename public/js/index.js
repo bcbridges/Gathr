@@ -131,3 +131,21 @@ if (window.location.pathname == "/api/event/new") {
       document.location.replace("/api/users/search/Coffee");
     });
 }
+
+// HANDLE LOGOUT REQUEST
+document
+  .querySelector('button[name="logoutbtn"]')
+  .addEventListener("click", async () => {
+    const logout = await fetch("/api/users/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (logout.ok) {
+      document.location.replace("/");
+    } else {
+      alert("Failed to log out.");
+    }
+  });

@@ -28,6 +28,33 @@ const eventdata = [
     event_title: "Wash Park Tennis",
     description: "Let's get our tennis on! Let me know if you need a racket.",
   },
+  {
+    owner_id: 3,
+    tag_id: 1,
+    address_1: "5370 Greenwood Plaza Blvd",
+    address_2: "#109",
+    city: "Denver",
+    state: "CO",
+    postal: "80210",
+    time_start: "2021-09-25T11:15:00.000Z",
+    time_end: "2021-09-25T13:30:00.000Z",
+    event_title: "Monk & Mongoose Coffee Co Study Sesh Meetup",
+    description:
+      "Meeting up to review jQuery. Let me know if ya'll want to change the coffee shop.",
+  },
+  {
+    owner_id: 3,
+    tag_id: 2,
+    address_1: "5370 Greenwood Plaza Blvd",
+    address_2: "#109",
+    city: "Denver",
+    state: "CO",
+    postal: "80210",
+    time_start: "2021-09-25T11:15:00.000Z",
+    time_end: "2021-09-25T13:30:00.000Z",
+    event_title: "Wash Park Tennis",
+    description: "Let's get our tennis on! Let me know if you need a racket.",
+  },
 ];
 
 const seedEvent = () => Events.bulkCreate(eventdata);

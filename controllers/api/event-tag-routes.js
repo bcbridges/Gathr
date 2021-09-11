@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 });
 
 //http:localhost:3001/api/eventTag/1<--this is just an example!
-// DOUBLE CHECK -> NOT SURE IF THIS IS A NEEDED ROUTE
+// DOUBLE CHECK -> IT'S BEING HIT SOMETIMES?
 router.get("/:id", async (req, res) => {
   // find a single EventTag by its `id`
   // let's include their event

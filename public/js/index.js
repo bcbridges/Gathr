@@ -1,10 +1,9 @@
-//   for login event handler
+//   LOGIN EVENT HANDLER
 const loginFormHandler = async (event) => {
-  // event.preventDefault();
-
   var email = document.querySelector(".email-login").value.trim();
   var password = document.querySelector(".password-login").value.trim();
-  console.log(`${email} & ${password}`);
+
+  // IF BOTH EMAIL AND PASSWORD ARE FILLED IN, PROCEED
   if (email && password) {
     const body = { email, password };
     console.log(body);
@@ -21,14 +20,17 @@ const loginFormHandler = async (event) => {
     } else {
       alert("Login failed.");
     }
+  } else {
+    window.alert("Please fill in email & password.");
   }
 };
 
-// for signup event handler
+// SIGNUP EVENT HANDLER
 const signupFormHandler = async (event) => {
   var email = document.querySelector(".email-login").value.trim();
   var password = document.querySelector(".password-login").value.trim();
-  console.log(`${email} & ${password}`);
+
+  // IF BOTH EMAIL AND PASSWORD ARE FILLED IN, PROCEED
   if (email && password) {
     const body = { email, password };
     console.log(body);
@@ -46,9 +48,12 @@ const signupFormHandler = async (event) => {
     } else {
       alert("User create failed.");
     }
+  } else {
+    window.alert("Please fill in email & password.");
   }
 };
 
+// PATHNAME USED TO PARSE OUT WHICH HANDLEBAR TEMPLATE IS CURRENTLY RENDERED
 if (window.location.pathname == "/") {
   document.getElementById("login").addEventListener("click", async (e) => {
     //do login api call
@@ -66,6 +71,7 @@ if (window.location.pathname == "/") {
 }
 
 if (window.location.pathname == "/api/event/new") {
+  // PULL DATA FROM NEW EVENT FORM UPON SUBMIT
   document
     .querySelector('button[name="submitbtn"]')
     .addEventListener("click", async (e) => {
@@ -89,8 +95,8 @@ if (window.location.pathname == "/api/event/new") {
         .querySelector('input[name="address_2"]')
         .value.trim();
       const tags = document.querySelector('select[name="tags"]').value;
-      console.log(tags);
 
+      // Creating new object if event fields are filled in
       if (event_title && start_date && end_date && addr_1 && event_desc) {
         var newEventInfo = {
           event_title,
@@ -101,8 +107,12 @@ if (window.location.pathname == "/api/event/new") {
           addr_2,
           tags,
         };
+      } else {
+        // If there is missing information - will alert the user when the try to submit
+        return window.alert("Please fill in all fields!");
       }
 
+      // sending new event obj to POST /api/event/
       const response = await fetch("/api/event/", {
         method: "POST",
         body: JSON.stringify(newEventInfo),
@@ -114,6 +124,7 @@ if (window.location.pathname == "/api/event/new") {
         .then(document.location.replace("/api/users/search/Coffee"));
     });
 
+  // IF USER CANCELS EVENT CREATION, BRINGS THEM BACK TO SEARCH/COFFEE
   document
     .querySelector('button[name="cancelbtn"]')
     .addEventListener("click", () => {

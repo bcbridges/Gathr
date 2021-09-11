@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, EventTags, Events } = require("../../models");
-
 const withAuth = require("../../utils/auth");
 
 //http:localhost:3001/api/event
@@ -57,7 +56,7 @@ router.get("/create/new", withAuth, async (req, res) => {
 });
 
 // VALID ROUTE - USED TO CREATE A NEW EVENT - BB
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   // Reversing user dropdown selection from the description to the id #
   const tagid_lookup = await EventTags.findOne({
     where: {
@@ -70,6 +69,7 @@ router.post("/", async (req, res) => {
   // Thinking to go back to dropdown - use similar methodology to tags above
   req.body.owner_id = 1;
 
+  //Created new event
   Events.create({
     owner_id: req.body.owner_id,
     tag_id: req.body.tag_id,

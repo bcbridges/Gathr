@@ -10,6 +10,19 @@ document.querySelector(".searchbar").addEventListener("keypress", (e) => {
   }
 });
 
+document
+  .querySelector('button[name="newEvent"]')
+  .addEventListener("click", async (e) => {
+    const response = await fetch("/api/event/create/new", {
+      method: "GET",
+    });
+    if (response.ok) {
+      document.location.replace("/api/event/new");
+    } else {
+      console.log(response);
+    }
+  });
+
 const searchInterestHandler = async (searchTerm) => {
   if (searchTerm) {
     const response = await fetch(`/api/eventTag/${searchTerm}`, {

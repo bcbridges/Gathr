@@ -1,20 +1,18 @@
-const router = require('express').Router();
-const { User, EventTags, Events } = require('../../models');
+const router = require("express").Router();
+const { User, EventTags, Events } = require("../../models");
 
-const withAuth = require('../../utils/auth');
+const withAuth = require("../../utils/auth");
 
 //http:localhost:3001/api/event
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   // find all eventTags
   // let's include their events?
-  try{
+  try {
     const eventData = await Events.findAll({
-      include: [{model: EventTags}, {model: User}]
+      include: [{ model: EventTags }, { model: User }],
     });
-    const events = eventData.map((event) =>
-      event.get({ plain: true })
-    );
-    res.render('all', {
+    const events = eventData.map((event) => event.get({ plain: true }));
+    res.render("all", {
       events,
       loggedIn: req.session.loggedIn,
     });
@@ -23,26 +21,40 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get("/new", (req, res) => {
+  res.render("newevent");
+});
+
+router.get("/:id", withAuth, async (req, res) => {
   // find a single EventTag by its `id`
   // let's include their event
-  try{
+  try {
     const eventData = await Events.findByPk(req.params.id, {
-      include: [{model: EventTags}, {model: User}]
+      include: [{ model: EventTags }, { model: User }],
     });
     const event = eventData.get({ plain: true });
     if (!event) {
-      res.status(404).json({message: 'no eventTag found with that id!'})
+      res.status(404).json({ message: "no eventTag found with that id!" });
       return;
     }
 
-    res.render('singleEvent', { event, loggedIn: req.session.loggedIn });
+    res.render("singleEvent", { event, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.post('/', (req, res) => {
+router.get("/create/new", async (req, res) => {
+  try {
+    await console.log("This is the new route.");
+    res.status(200);
+    res.render("newevent");
+  } catch {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/", (req, res) => {
   // create a new tag
   Events.create({
     owner_id: req.body.owner_id,
@@ -55,41 +67,40 @@ router.post('/', (req, res) => {
     time_start: req.body.time_start,
     time_end: req.body.time_end,
     description: req.body.description,
-    event_image: req.body.event_image
-
+    event_image: req.body.event_image,
   })
-  .then((newEvent) => {
-    res.json(newEvent,)
-  })
-  .catch((err)=> {
-    res.status(500).json(err)
-  })
+    .then((newEvent) => {
+      res.json(newEvent);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
 
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   // update a tag's name by its `id` value
   Events.update(req.body, {
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-  .then((updatedEvent) => {
-    res.json(updatedEvent)
-  })
-  .catch((err) => res.json(err))
+    .then((updatedEvent) => {
+      res.json(updatedEvent);
+    })
+    .catch((err) => res.json(err));
 });
 
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   // delete on tag by its `id` value
   Events.destroy({
     where: {
       id: req.params.id,
     },
   })
-  .then((deletedEvent) => {
-    res.json(deletedEvent);
-  })
-  .catch((err) => res.json(err))
+    .then((deletedEvent) => {
+      res.json(deletedEvent);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;

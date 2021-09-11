@@ -1,28 +1,28 @@
-<body class='search'>
+<body class="search">
   <section
-    class='hero is-small is-success is-flex is-justify-content-center is-align-items-center'
+    class="hero is-small is-success is-flex is-justify-content-center is-align-items-center"
   >
-    <div class='hero-body has-text-centered'>
-      <p class='title'>Use keywords to find events</p>
+    <div class="hero-body has-text-centered">
+      <p class="title">Use keywords to find events</p>
 
       <!--Search Bar-->
-      <div class='searchbar'>
+      <div class="searchbar">
         <input
-          class='input is-normal'
-          type='text'
-          placeholder='Try Coffee, Running, or Tennis?'
+          class="input is-normal"
+          type="text"
+          placeholder="Try Coffee, Running, or Tennis?"
           name="search"
         />
       </div>
+      <button class="button subtitle" name="newEvent">Create a new event</button>
+    </div>
 
-
-<!-- For each render each card that is returned from the API search -->
-<main>
-{{#each events as |event|}}
-{{> all-event-details}}
-{{/each}}
-</main>
+    <!-- For each render each card that is returned from the API search -->
+    <main>
+      {{#each events as |event|}}
+      {{> all-event-details}}
+      {{/each}}
+    </main>
   </section>
 </body>
 <script src="/js/search.js"></script>
-

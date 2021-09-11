@@ -49,20 +49,6 @@ const signupFormHandler = async (event) => {
   }
 };
 
-// AFTER LOGIN
-const searchInterestHandler = async (searchTerm) => {
-  if (searchTerm) {
-    const response = await fetch(`/api/eventTag/${searchTerm}`, {
-      method: "GET",
-    });
-    if (response.ok) {
-      document.location.replace(`/api/eventTag/${searchTerm}`);
-    } else {
-      console.log(response);
-    }
-  }
-};
-
 if (window.location.pathname == "/") {
   document.getElementById("login").addEventListener("click", async (e) => {
     //do login api call
@@ -79,16 +65,5 @@ if (window.location.pathname == "/") {
   });
 }
 
-// if (document.location.pathname == `/api/users/search/`) {
-//   document.querySelector(".searchbar").addEventListener("keypress", (e) => {
-//     if (e.key === "Enter") {
-//       const searchTerm1 = document.querySelector('input[name="search"]');
-//       const searchTerm2 = searchTerm1.value;
-//       console.log(searchTerm2);
-
-//       e.preventDefault();
-//       searchInterestHandler(searchTerm2);
-//       console.log("The enter button was clicked.");
-//     }
-//   });
-// }
+if (window.location.pathname == "/api/event/new") {
+}

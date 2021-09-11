@@ -41,7 +41,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/api/users/search");
+      document.location.replace("/api/users/search/Coffee");
       alert("User Created.");
     } else {
       alert("User create failed.");

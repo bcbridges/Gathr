@@ -19,9 +19,13 @@
 
     <!-- For each render each card that is returned from the API search -->
     <main>
+<div
+  class="columns is-multiline is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
+>
       {{#each events as |event|}}
       {{> all-event-details}}
       {{/each}}
+</div>
     </main>
   </section>
 </body>

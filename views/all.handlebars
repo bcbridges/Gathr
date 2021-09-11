@@ -10,7 +10,7 @@
         <input
           class='input is-normal'
           type='text'
-          placeholder='Search Keywords'
+          placeholder='Try Coffee, Running, or Tennis?'
           name="search"
         />
       </div>
@@ -19,8 +19,10 @@
 <!-- For each render each card that is returned from the API search -->
 <main>
 {{#each events as |event|}}
-{{> event-details}}
+{{> all-event-details}}
 {{/each}}
 </main>
   </section>
 </body>
+<script src="/js/search.js"></script>
+

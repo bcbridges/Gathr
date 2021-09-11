@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Events } = require("../../models");
+const { User, Events, EventTags } = require("../../models");
 const bcrypt = require("bcrypt");
 
 // CREATE new user
@@ -78,10 +78,17 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.get("/search", async (req, res) => {
+router.get("/search/:id", async (req, res) => {
   if (req.session.loggedIn) {
     console.log("This is the /search route.");
-    const dbEventData = await Events.findAll();
+    const dbEventData = await Events.findAll({
+      include: {
+        model: EventTags,
+        where: {
+          tag_description: req.params.id,
+        },
+      },
+    });
     const events = dbEventData.map((event) => event.get({ plain: true }));
     console.log(events);
     res.render("all", { events });

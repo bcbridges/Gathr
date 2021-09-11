@@ -50,7 +50,7 @@ router.get("/:id", withAuth, async (req, res) => {
 router.get("/create/new", async (req, res) => {
   try {
     res.status(200);
-    res.render("newevent", { tags });
+    res.render("newevent");
   } catch {
     res.status(500).json(err);
   }

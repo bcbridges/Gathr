@@ -21,8 +21,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/new", (req, res) => {
-  res.render("newevent");
+router.get("/new", async (req, res) => {
+  const tagData = await EventTags.findAll();
+  const tags = tagData.map((tag) => tag.get({ plain: true }));
+  console.log(tags);
+  res.render("newevent", { tags });
 });
 
 router.get("/:id", withAuth, async (req, res) => {
@@ -46,9 +49,8 @@ router.get("/:id", withAuth, async (req, res) => {
 
 router.get("/create/new", async (req, res) => {
   try {
-    await console.log("This is the new route.");
     res.status(200);
-    res.render("newevent");
+    res.render("newevent", { tags });
   } catch {
     res.status(500).json(err);
   }
@@ -61,13 +63,9 @@ router.post("/", (req, res) => {
     tag_id: req.body.tag_id,
     address_1: req.body.address_1,
     address_2: req.body.address_2,
-    city: req.body.city,
-    state: req.body.state,
-    postal: req.body.postal,
     time_start: req.body.time_start,
     time_end: req.body.time_end,
     description: req.body.description,
-    event_image: req.body.event_image,
   })
     .then((newEvent) => {
       res.json(newEvent);

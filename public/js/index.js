@@ -66,4 +66,13 @@ if (window.location.pathname == "/") {
 }
 
 if (window.location.pathname == "/api/event/new") {
+  document
+    .querySelector('button[name="submitbtn"]')
+    .addEventListener("click", () => {});
+
+  document
+    .querySelector('button[name="cancelbtn"]')
+    .addEventListener("click", () => {
+      document.location.replace("/api/users/search/Coffee");
+    });
 }

@@ -56,6 +56,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.currUser = dbUserData.user_id;
 
       res.render("all");
     });
@@ -89,12 +90,15 @@ router.get("/search/:id", withAuth, async (req, res) => {
       },
     });
     const events = dbEventData.map((event) => event.get({ plain: true }));
-    ////// NEED TO EDIT TIME TO BE UI FRIENDLY
-    // const edited_start = new Date(req.body.start_date).toLocaleString();
-    // const edited_end = new Date(req.body.end_date).toLocaleString();
-    // req.body.start_date = edited_start;
-    // req.body.end_date = edited_end;
+    const eventClear = events.map((event) => {
+      let cleanStart = new Date(event.time_start).toLocaleString();
+      event.time_start = cleanStart;
+      let cleanEnd = new Date(event.time_end).toLocaleString();
+      event.time_end = cleanEnd;
+      event.currUser = req.session.currUser;
+    });
 
+    console.log(events);
     res.render("all", { events });
   } else {
     res.status(404);

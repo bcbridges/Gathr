@@ -67,7 +67,7 @@ router.post("/", withAuth, async (req, res) => {
 
   // Not sure yet how to find current logged in user to make owner_id
   // Thinking to go back to dropdown - use similar methodology to tags above
-  req.body.owner_id = 1;
+  req.body.owner_id = req.session.currUser;
 
   //Created new event
   Events.create({

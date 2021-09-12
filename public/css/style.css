@@ -14,6 +14,16 @@ body.main {
   background-size: 100%;
 }
 
+body.maincolumns {
+  margin: 0;
+  background: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
 body.search {
   background: none;
 }
@@ -35,10 +45,12 @@ h1 {
   font-weight: bolder;
 }
 
-.searchButton {
-  background-color: #8a4d76;
-  color: #fff;
-  border-color: #00d1b2;
+.searchButton:hover {
+  background-color: #ffdd57;
+}
+
+.dropdown-content:hover {
+  background-color: #ffdd57;
 }
 
 /*Background of cards*/
@@ -98,6 +110,10 @@ h2 {
     footer separately from header*/
   font-family: 'Times New Roman', Times, serif;
   color: #8a4d76;
+}
+
+.footer {
+  padding: 10px;
 }
 
 /*Saving/Deleting Things*/

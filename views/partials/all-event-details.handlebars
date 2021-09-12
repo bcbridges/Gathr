@@ -1,31 +1,33 @@
-<div class="column card is-one-quarter">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="subtitle is-4 is-dark">{{event_title}}</p>
-        <p class="is-6">{{address_1}} {{address_2}}</p>
-        <p class="is-6">{{time_start}}</p>
-        <p class="is-6">{{description}}</p>
+<div class='column card is-one-quarter'>
+  <div class='card'>
+    <div class='card-content'>
+      <div class='media'>
+        <div class='media-content'>
+          <p class='subtitle is-4 is-dark'>{{event_title}}</p>
+          <p class='is-6'>{{address_1}} {{address_2}}</p>
+          <p class='is-6'>{{time_start}}</p>
+          <p class='is-6'>{{description}}</p>
+        </div>
       </div>
+      <footer class='card-footer'>
+        <div title='Add to Calendar' class='addeventatc'>
+          Add to Calendar
+          <span class='start'>{{time_start}}</span>
+          <span class='end'>{{time_end}}</span>
+          <span class='timezone'>Mountain Daylight Time</span>
+          <span class='title'>{{event_title}}</span>
+          <span class='description'>{{description}}</span>
+          <span class='location'>{{address_1}} {{address_2}}, Denver, CO</span>
+        </div>
+      </footer>
+      {{#if ownerCheck}}
+        <input type='hidden' id='deleteid' value='{{event_id}}' />
+        <button
+          class='card-footer-item button delete'
+          name='deletebtn'
+          data-index='{{event_id}}'
+        >delete</button>
+      {{/if}}
     </div>
-    <footer class="card-footer">
-      <div title="Add to Calendar" class="addeventatc">
-        Add to Calendar
-        <span class="start">{{time_start}}</span>
-        <span class="end">{{time_end}}</span>
-        <span class="timezone">Mountain Daylight Time</span>
-        <span class="title">{{event_title}}</span>
-        <span class="description">{{description}}</span>
-        <span class="location">{{address_1}} {{address_2}}, Denver, CO</span>
-      </div>
-    </footer>
-    {{#if ownerCheck}}
-      <input type="hidden" id="deleteid" value="{{event_id}}" />
-      <button
-        class="card-footer-item button delete"
-        name="deletebtn"
-        data-index="{{event_id}}"
-      >delete</button>
-    {{/if}}
   </div>
 </div>

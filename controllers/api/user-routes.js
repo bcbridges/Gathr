@@ -19,6 +19,8 @@ router.post("/", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.currUser = dbUserData.user_id;
+      console.log(req.session);
 
       res.status(200).json(dbUserData);
     });
@@ -96,6 +98,7 @@ router.get("/search/:id", withAuth, async (req, res) => {
       let cleanEnd = new Date(event.time_end).toLocaleString();
       event.time_end = cleanEnd;
       event.currUser = req.session.currUser;
+      event.ownerCheck = event.currUser == event.owner_id;
     });
 
     console.log(events);

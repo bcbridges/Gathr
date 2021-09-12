@@ -14,7 +14,8 @@
         class="card-footer-item button save"
         data-index="{{i}}"
       >Save</a>
-      <a href="#" class="card-footer-item button is-hidden delete">Delete</a>
+      <input type="hidden" id="deleteid" value="{{event_id}}" />
+      <button class="card-footer-item button delete" name="deletebtn" data-index="{{event_id}}">delete</button>
     </footer>
   </div>
 </div>

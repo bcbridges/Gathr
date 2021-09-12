@@ -149,3 +149,26 @@ document
       alert("Failed to log out.");
     }
   });
+
+  
+
+  const deletebtnHandler = async (event) => {
+    const event_id = document.getElementById('deleteid').value
+    console.log(event_id)
+    const deleteEvent = await fetch(`/api/event/${event_id}`, {
+        method: "DELETE",
+      })
+      if (deleteEvent.ok){
+        document.location.replace("/api/users/search/coffee");
+      } else {
+        alert('failed to delete event!!')
+      }
+  }
+
+  document
+    .querySelector('button[name="deletebtn"]')
+    .addEventListener("click", async (e) => {
+      e.preventDefault();
+      
+      deletebtnHandler()
+    });

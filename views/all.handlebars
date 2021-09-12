@@ -2,23 +2,58 @@
   <section
     class="hero is-small is-success is-flex is-justify-content-center is-align-items-center"
   >
-    <div class="hero-body has-text-centered">
-      <p class="title">Use keywords to find events</p>
+    <div class="hero-body has-text-centered py-4">
+        
 
-      <!--Search Bar-->
-      <div class="searchbar">
-        <input
-          class="input is-normal"
-          type="text"
-          placeholder="Try Coffee, Running, or Tennis?"
-          name="search"
-        />
+        <div class="dropdown is-hoverable">
+          <p class="title mr-4 mb-0">Use keywords to find events:   </p>
+          <div class="dropdown-trigger">
+            <button
+              class="button searchButton"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu "
+            >
+              <span class="event-selected">Select an Event Type</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div
+            class="dropdown-menu has-text-left"
+            id="dropdown-menu"
+            role="menu"
+          >
+            <!-- Links with all of the available state selections -->
+            <div class="dropdown-content">
+              <a href="" class="dropdown-item">Coffee</a>
+              <a href="" class="dropdown-item">Food</a
+              ><a href="" class="dropdown-item">Running</a
+              ><a href="" class="dropdown-item">Tennis</a
+              ><a href="" class="dropdown-item">Workout</a
+              ><a href="" class="dropdown-item">Football</a
+              ><a href="" class="dropdown-item">Board Games</a>
+              <a href="" class="dropdown-item">Skiing</a>
+              <a href="" class="dropdown-item">Rollerblading</a
+              ><a href="" class="dropdown-item">Tech</a
+              ><a href="" class="dropdown-item">Networking</a
+              ><a href="" class="dropdown-item">Community Service</a
+              ><a href="" class="dropdown-item">Community Events</a
+              ><a href="" class="dropdown-item">Tutoring</a
+              ><a href="" class="dropdown-item">Reading</a
+              ><a href="" class="dropdown-item">Movies & Entertainment</a
+              ><a href="" class="dropdown-item">Music</a
+              ><a href="" class="dropdown-item">Snow Boarding</a
+              ><a href="" class="dropdown-item">Hiking</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="button subtitle" name="newEvent">Create a new event</button>
-    </div>
-
+    <button class="button mb-4 is-warning normal" name="newEvent">OR Create a new event</button>
+  </section>
     <!-- For each render each card that is returned from the API search -->
     <main>
+
 <div
   class="columns is-multiline is-half-tablet is-one-third-desktop is-one-quarter-widescreen is-justify-content-space-around"
 >
@@ -27,6 +62,6 @@
       {{/each}}
 </div>
     </main>
-  </section>
+  
 </body>
 <script src="/js/search.js"></script>

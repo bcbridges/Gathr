@@ -9,13 +9,23 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a
-        href="#"
-        class="card-footer-item button save"
-        data-index="{{i}}"
-      >Save</a>
-      <input type="hidden" id="deleteid" value="{{event_id}}" />
-      <button class="card-footer-item button delete" name="deletebtn" data-index="{{event_id}}">delete</button>
+      <div title="Add to Calendar" class="addeventatc">
+        Add to Calendar
+        <span class="start">{{time_start}}</span>
+        <span class="end">{{time_end}}</span>
+        <span class="timezone">Mountain Daylight Time</span>
+        <span class="title">{{event_title}}</span>
+        <span class="description">{{description}}</span>
+        <span class="location">{{address_1}} {{address_2}}, Denver, CO</span>
+      </div>
     </footer>
+    {{#if ownerCheck}}
+      <input type="hidden" id="deleteid" value="{{event_id}}" />
+      <button
+        class="card-footer-item button delete"
+        name="deletebtn"
+        data-index="{{event_id}}"
+      >delete</button>
+    {{/if}}
   </div>
 </div>

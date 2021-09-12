@@ -55,6 +55,11 @@ const signupFormHandler = async (event) => {
 
 // PATHNAME USED TO PARSE OUT WHICH HANDLEBAR TEMPLATE IS CURRENTLY RENDERED
 if (window.location.pathname == "/") {
+  //HIDE LOGOUT BUTTON ON HOME SCREEN
+  document
+    .querySelector('button[name="logoutbtn"]')
+    .setAttribute("style", "visibility: hidden");
+
   document.getElementById("login").addEventListener("click", async (e) => {
     //do login api call
     //if success, redirect logic here

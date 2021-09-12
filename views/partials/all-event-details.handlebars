@@ -20,7 +20,7 @@
       </div>
     </footer>
     {{#if ownerCheck}}
-      <button>Alex's delete button</button>
+            <input type="hidden" id="deleteid" value="{{event_id}}" />
+      <button class="card-footer-item button delete" name="deletebtn" data-index="{{event_id}}">delete</button>
     {{/if}}
   </div>
-</div>

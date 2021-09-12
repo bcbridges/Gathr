@@ -89,12 +89,12 @@ router.post("/", withAuth, async (req, res) => {
     });
 });
 
-// DOUBLE CHECK - PROBABLY DO NOT NEED THIS ROUTE.
+
 router.delete("/:id", (req, res) => {
   // delete on tag by its `id` value
   Events.destroy({
     where: {
-      id: req.params.id,
+      event_id: req.params.id,
     },
   })
     .then((deletedEvent) => {

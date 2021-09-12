@@ -1,7 +1,8 @@
 document.querySelector(".searchbar").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    let searchTerm1 = document.querySelector('input[name="search"]');
-    let searchTerm2 = searchTerm1.value;
+    const searchTerm1 = document.querySelector('input[name="search"]');
+    const searchTerm2 = searchTerm1.value;
+    console.log(searchTerm2);
 
     e.preventDefault();
     searchInterestHandler(searchTerm2);

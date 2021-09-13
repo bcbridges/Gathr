@@ -28,7 +28,15 @@ There is no installation required for this application. The application website 
 
 ## Usage
 
-Project Usage
+From the homepage via the link above, enter your email address in the "Username" field, and your 10-digit password in the "Password" field. If this is your first time visiting Gathr, click the "Sign up" button, otherwise click the "Sign in" button. You will receive browser alerts for failed logins or sign ups.
+
+Use the dropdown menu at the top to select an Event Type. Your selection will dynmaically display the upcoming Gathring events in the Denver area. Click "Add to Calendar" and choose your platform to add the event to your calendar.
+
+To create an event yourself, choose the "Create New Event" button. Fill out the form with the required information, including the "Event Tag" at the bottom, and click "Submit".
+
+To see the event, choose the tag from the dropdown menu and it will display along with similar events. As the Event creator, you have the ability to delete, or cancel the event. To do so, click the "x" at the bottom of the card.
+
+To logout, select the "Logout" button at the top right of the window.
 
 ## Project Team
 
@@ -43,10 +51,6 @@ This project is licensed under the GNU General Public License v3.0.
 
 If you wish to contribute to the project, please reach out to Brice Bridges at bbridgesdev@gmail.com.
 
-## Tests
-
-Project test information.
-
 ## Questions
 
-Questions information.
+Please send any quesitons to support@gathr.com.

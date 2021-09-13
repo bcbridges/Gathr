@@ -18,8 +18,6 @@ Gathr is an application to connect with people who are curious about the things 
 
 - [How To Contribute](#how-to-contribute)
 
-- [Tests](#tests)
-
 - [Questions](#questions)
 
 ## Installation
@@ -52,5 +50,7 @@ This project is licensed under the GNU General Public License v3.0.
 If you wish to contribute to the project, please reach out to Brice Bridges at bbridgesdev@gmail.com.
 
 ## Questions
+
+view our [presentation](https://docs.google.com/presentation/d/1NpFiOzenXs7dAN3lNC2IplcCJm6gxcsknTmh0h_Df48/edit?usp=sharing) here.
 
 Please send any quesitons to support@gathr.com.

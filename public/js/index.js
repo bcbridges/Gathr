@@ -81,6 +81,7 @@ if (window.location.pathname == "/api/event/new") {
     .querySelector('button[name="submitbtn"]')
     .addEventListener("click", async (e) => {
       e.preventDefault();
+      console.log(e);
       const event_title = document
         .querySelector('input[name="event_title"]')
         .value.trim();
@@ -100,6 +101,7 @@ if (window.location.pathname == "/api/event/new") {
         .querySelector('input[name="address_2"]')
         .value.trim();
       const tags = document.querySelector('select[name="tags"]').value;
+      console.log(tags);
 
       // Creating new object if event fields are filled in
       if (event_title && start_date && end_date && addr_1 && event_desc) {
@@ -155,25 +157,23 @@ document
     }
   });
 
-  
+// const deletebtnHandler = async (event) => {
+//   const event_id = document.getElementById("deleteid").value;
+//   console.log(event_id);
+//   const deleteEvent = await fetch(`/api/event/${event_id}`, {
+//     method: "DELETE",
+//   });
+//   if (deleteEvent.ok) {
+//     document.location.replace("/api/users/search/coffee");
+//   } else {
+//     alert("failed to delete event!!");
+//   }
+// };
 
-  const deletebtnHandler = async (event) => {
-    const event_id = document.getElementById('deleteid').value
-    console.log(event_id)
-    const deleteEvent = await fetch(`/api/event/${event_id}`, {
-        method: "DELETE",
-      })
-      if (deleteEvent.ok){
-        document.location.replace("/api/users/search/coffee");
-      } else {
-        alert('failed to delete event!!')
-      }
-  }
+// document
+//   .querySelector('button[name="deletebtn"]')
+//   .addEventListener("click", async (e) => {
+//     e.preventDefault();
 
-  document
-    .querySelector('button[name="deletebtn"]')
-    .addEventListener("click", async (e) => {
-      e.preventDefault();
-      
-      deletebtnHandler()
-    });
+//     deletebtnHandler();
+//   });

@@ -1,6 +1,6 @@
-document.querySelector(".searchbar").addEventListener("keypress", (e) => {
+document.querySelector(".searchButton").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    const searchTerm1 = document.querySelector('input[name="search"]');
+    const searchTerm1 = document.querySelector('div[class="dropdown-content"]');
     const searchTerm2 = searchTerm1.value;
     console.log(searchTerm2);
 
@@ -34,3 +34,24 @@ const searchInterestHandler = async (searchTerm) => {
     }
   }
 };
+
+const deletebtnHandler = async (event) => {
+  const event_id = document.getElementById("deleteid").value;
+  console.log(event_id);
+  const deleteEvent = await fetch(`/api/event/${event_id}`, {
+    method: "DELETE",
+  });
+  if (deleteEvent.ok) {
+    document.location.replace("/api/users/search/coffee");
+  } else {
+    alert("failed to delete event!!");
+  }
+};
+
+document
+  .querySelector('button[name="deletebtn"]')
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    deletebtnHandler();
+  });

@@ -58,13 +58,16 @@ router.get("/create/new", withAuth, async (req, res) => {
 // VALID ROUTE - USED TO CREATE A NEW EVENT - BB
 router.post("/", withAuth, async (req, res) => {
   // Reversing user dropdown selection from the description to the id #
-  const tagid_lookup = await EventTags.findOne({
+  const tagid_lookup = await EventTags.findAll({
     where: {
       tag_description: req.body.tags,
     },
   });
-  req.body.tag_id = tagid_lookup.tag_id;
 
+  tagid_lookupClean = tagid_lookup.map((tag) => tag.get({ plain: true }));
+  console.log(tagid_lookupClean);
+  req.body.tag_id = tagid_lookupClean[0].tag_id;
+  console.log(req.body.tag_id);
   // Not sure yet how to find current logged in user to make owner_id
   // Thinking to go back to dropdown - use similar methodology to tags above
   req.body.owner_id = req.session.currUser;
@@ -88,7 +91,6 @@ router.post("/", withAuth, async (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 router.delete("/:id", (req, res) => {
   // delete on tag by its `id` value

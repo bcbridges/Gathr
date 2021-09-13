@@ -20,7 +20,7 @@ const eventtagsdata = [
     tag_description: "Football",
   },
   {
-    tag_description: "Board Games",
+    tag_description: "Games",
   },
   {
     tag_description: "Skiing",
@@ -35,11 +35,9 @@ const eventtagsdata = [
     tag_description: "Networking",
   },
   {
-    tag_description: "Community Service",
+    tag_description: "Service",
   },
-  {
-    tag_description: "Community Events",
-  },
+
   {
     tag_description: "Tutoring",
   },
@@ -47,13 +45,10 @@ const eventtagsdata = [
     tag_description: "Reading",
   },
   {
-    tag_description: "Movies & Entertainment",
+    tag_description: "Movies",
   },
   {
     tag_description: "Music",
-  },
-  {
-    tag_description: "Snow Boarding",
   },
   {
     tag_description: "Hiking",
